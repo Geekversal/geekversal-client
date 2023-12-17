@@ -1,4 +1,40 @@
 {
+  "description": "A monorepo of Geekversal web page and chrome extension",
+  "displayName": "Geekversal Client",
+  "name": "geekversal-client",
+  "scripts": {
+    "serve-app": "vite --mode app",
+    "build-app": "vite build --mode app",
+    "serve-ext": "vite --mode ext",
+    "build-ext": "vite build --mode ext",
+    "lint": "eslint . --fix --ext js,mjs,cjs,ts,mts,cts,vue"
+  },
+  "overrides": {
+    "@crxjs/vite-plugin": "$@crxjs/vite-plugin"
+  },
+  "pnpm": {
+    "overrides": {},
+    "peerDependencyRules": {
+      "allowAny": [],
+      "allowedDeprecatedVersions": {
+        "sourcemap-codec": "1.4.8"
+      },
+      "allowedVersions": {},
+      "ignoreMissing": []
+    }
+  },
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=18"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix --ext js,mjs,cjs,ts,mts,cts,vue"
+  },
   "dependencies": {
     "@chenfengyuan/vue-countdown": "^2.1.2",
     "@mozilla/readability": "^0.5.0",
@@ -12,7 +48,6 @@
     "vue-echarts": "^6.6.4",
     "vue-router": "^4.2.5"
   },
-  "description": "A monorepo of Geekversal web page and chrome extension",
   "devDependencies": {
     "@crxjs/vite-plugin": "^2.0.0-beta.21",
     "@iconify-json/mdi": "^1.1.55",
@@ -47,40 +82,5 @@
     "vue-tsc": "^1.8.22",
     "webext-bridge": "^6.0.1",
     "webextension-polyfill": "^0.10.0"
-  },
-  "displayName": "Geekversal Client",
-  "name": "geekversal-client",
-  "overrides": {
-    "@crxjs/vite-plugin": "$@crxjs/vite-plugin"
-  },
-  "pnpm": {
-    "overrides": {},
-    "peerDependencyRules": {
-      "allowAny": [],
-      "allowedDeprecatedVersions": {
-        "sourcemap-codec": "1.4.8"
-      },
-      "allowedVersions": {},
-      "ignoreMissing": []
-    }
-  },
-  "private": true,
-  "scripts": {
-    "serve-app": "vite --mode app",
-    "build-app": "vite build --mode app",
-    "serve-ext": "vite --mode ext",
-    "build-ext": "vite build --mode ext",
-    "lint": "eslint . --fix --ext js,mjs,cjs,ts,mts,cts,vue"
-  },
-  "type": "module",
-  "version": "0.0.1",
-  "engines": {
-    "node": ">=18"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*": "eslint --fix --ext js,mjs,cjs,ts,mts,cts,vue"
   }
 }
