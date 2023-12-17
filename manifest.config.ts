@@ -20,10 +20,17 @@ export default defineManifest(async (env) => ({
   manifest_version: 3,
   // key: 'ekgmcbpgglflmgcfajnglpbcbdccnnje',
   action: {
+    default_icon: {
+      '16': 'favicon.ico',
+      '24': 'favicon.ico',
+      '32': 'favicon.ico',
+    },
     default_popup: 'src/popup/index.html',
+    default_title: 'Geekversal',
   },
   background: {
     service_worker: 'src/background/index.ts',
+    type: 'module',
   },
   content_scripts: [
     {
@@ -35,7 +42,16 @@ export default defineManifest(async (env) => ({
   ],
   host_permissions: ['*://*/*'],
   options_page: 'src/options/index.html',
-  permissions: ['storage', 'activeTab', 'identity'],
+  permissions: [
+    "contextMenus",
+    "activeTab",
+    "tabs",
+    "pageCapture",
+    "desktopCapture",
+    "storage",
+    "cookies",
+    "bookmarks"
+],
   web_accessible_resources: [
     {
       matches: ['*://*/*'],

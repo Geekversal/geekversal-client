@@ -99,6 +99,14 @@ export default defineConfig({
       port: 8889,
       overlay: false,
     },
+    proxy: {
+      "/api": {
+        target: process.env.VUE_APP_BASE_URL,
+        ws: true,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    }
   },
   optimizeDeps: {
     include: ['vue', '@vueuse/core'],

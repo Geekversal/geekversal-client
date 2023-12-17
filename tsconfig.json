@@ -3,7 +3,12 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "lib": ["ESNext", "DOM"],
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ],
     "module": "ESNext",
     "moduleResolution": "Node",
     "noEmit": true,
@@ -17,7 +22,7 @@
       "~/*": ["./src/*"],
       "src/*": ["./src/*"]
     },
-    "types": ["unplugin-icons/types/vue", "chrome"]
+    "types": ["unplugin-icons/types/vue", "chrome", "webextension-polyfill"]
   },
   "include": [
     "vite.config.ts",
@@ -26,6 +31,9 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules"
   ],
   "references": [
     {
