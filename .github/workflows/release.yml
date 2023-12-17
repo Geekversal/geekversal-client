@@ -41,8 +41,11 @@ jobs:
         id: get-version
         run: echo "::set-output name=version::$(node -p "require('./package.json').version")"
 
-      - run: npm run build
-      - run: zip -r ${{ steps.get-version.outputs.version }}.zip dist
+      - run: npm run build-app
+      - run: zip -r app-${{ steps.get-version.outputs.version }}.zip dist
+
+      - run: npm run build-ext
+      - run: zip -r ext-${{ steps.get-version.outputs.version }}.zip dist
 
       - name: GH Release
         uses: softprops/action-gh-release@v0.1.15
@@ -50,4 +53,6 @@ jobs:
           tag_name: ${{ steps.get-version.outputs.version }}
           release_name: ${{ steps.get-version.outputs.version }}
           draft: true
-          files: ${{ steps.get-version.outputs.version }}.zip
+          files: | 
+            app-${{ steps.get-version.outputs.version }}.zip
+            ext-${{ steps.get-version.outputs.version }}.zip
